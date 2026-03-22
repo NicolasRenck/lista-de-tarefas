@@ -1,0 +1,23 @@
+Lista de tarefas (to-do-list) (Django Fullstack)
+
+Gerenciador de tarefas moderno desenvolvido com Django, focado em uma experiência de usuário limpa e intuitiva.
+
+Stack:
+
+- Python 3 + Django (CBV)
+- HTML5 + CSS3
+- SQLite
+- Django Contrib Auth (Login/Logout)
+
+Funcionalidades:
+
+- CRUD completo
+- Sistema de login, apenas usuarios logados autenticados podem ver suas respectivas listas
+- Adaptado para diferentes tamanhos de tela
+
+Como rodar o projeto:
+
+- python -m venv venv (ambiente virtual)
+- pip install django (instalar django)
+- python manage.py migrate (migrações)
+- python manage.py runserver (rodar servidor)

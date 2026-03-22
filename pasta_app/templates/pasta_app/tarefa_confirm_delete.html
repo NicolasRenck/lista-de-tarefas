@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmar Exclusão</title>
+    <link rel="stylesheet" href="{% static 'pasta_app/styles.css' %}">
+</head>
+<body>
+
+<div class="container" style="text-align: center;">
+    <div class="header">
+        <h1 style="color: #2d3436; font-size: 1.5rem;">Tem certeza?</h1>
+        <p>Você está prestes a apagar:</p>
+        <h3 style="margin: 15px 0; font-weight: 700;">"{{ object.titulo }}"</h3>
+    </div>
+
+    <hr class="divisor-suave">
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn-confirmar">Sim, excluir permanentemente</button>
+    </form>
+
+    <a href="{% url 'tarefas' %}" class="btn-voltar">Não, manter tarefa</a>
+</div>
+
+</body>
+</html>

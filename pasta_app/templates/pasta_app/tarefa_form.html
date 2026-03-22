@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if object %}Editar{% else %}Nova{% endif %} Tarefa</title>
+    <link rel="stylesheet" href="{% static 'pasta_app/styles.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>{% if object %}Editar Tarefa{% else %}Nova Tarefa{% endif %}</h1>
+        <p>Preencha os detalhes abaixo</p>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- O Django gera os campos aqui -->
+        
+        <button type="submit" class="btn-save">Salvar Tarefa</button>
+    </form>
+
+    <a href="{% url 'tarefas' %}" class="btn-cancel">Cancelar e voltar</a>
+</div>
+
+</body>
+</html>

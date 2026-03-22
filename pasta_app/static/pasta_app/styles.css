@@ -1,0 +1,247 @@
+:root {
+    --bg-body: #e0e4e8; 
+    --bg-card: #ffffff;
+    --primary: #4a90e2;
+    --text-main: #2d3436;
+    --shadow-soft: 0 20px 40px rgba(0,0,0,0.08); 
+    --border-light: rgba(255, 255, 255, 0.5); 
+}
+
+body {
+    background-color: var(--bg-body);
+    background: radial-gradient(circle, #e4e4e4 0%, #dcdde1 100%);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--bg-card);
+    padding: 40px;
+    
+    
+    border-radius: 24px; 
+    border: 1px solid rgba(0, 0, 0, 0.05); 
+    box-shadow: var(--shadow-soft);
+    position: relative;
+}
+
+.header {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.header p {
+    color: var(--text-light);
+    margin: 5px 0;
+}
+
+.btn-add {
+    display: block;
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s, background 0.2s;
+    margin-bottom: 25px;
+}
+
+.btn-add:hover {
+    background-color: #357abd;
+    transform: translateY(-2px);
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+.tarefa-card {
+    background: var(--bg-card);
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+.tarefa-card:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.tarefa-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.tarefa-titulo {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+}
+
+.tarefa-status {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.acoes a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-left: 5px;
+    transition: background 0.2s;
+}
+
+.btn-edit {
+    color: var(--primary);
+    background: #eef5ff;
+}
+
+.btn-edit:hover { background: #d0e3ff; }
+
+.btn-delete {
+    color: var(--danger);
+    background: #fff0f0;
+}
+
+.btn-delete:hover { background: #ffdada; }
+
+.footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-logout {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+form p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+input[type="text"], textarea, select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.btn-save {
+    width: 100%;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 1rem;
+}
+
+.btn-save:hover {
+    background-color: #357abd;
+}
+
+.btn-cancel {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.btn-danger {
+    background-color: #ff7675; 
+    color: white; 
+    border: none;
+    transition: background 0.2s ease;
+}
+
+.btn-danger:hover {
+    background-color: #e17055; 
+}
+
+.divisor-suave {
+    height: 1px;
+    background-color: #cac7c7;
+    margin: 25px auto; 
+    width: 80%;       
+    border: none;
+}
+
+.btn-confirmar {
+    width: 100%;
+    background-color: #ff7675; 
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-family: inherit; 
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.btn-confirmar:hover {
+    background-color: #d63031;
+    transform: translateY(-2px); 
+    box-shadow: 0 5px 15px rgba(214, 48, 49, 0.2);
+}
+
+
+.btn-voltar {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    margin-top: 15px;
+    color: #636e72;
+    text-decoration: none;
+    font-family: inherit; 
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.btn-voltar:hover {
+    background-color: #f1f2f6; 
+    color: #2d3436;
+}

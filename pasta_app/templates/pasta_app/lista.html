@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefas</title>
+    <link rel="stylesheet" href="{% static 'pasta_app/styles.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Tarefas</h1>
+        <p>Bem-vindo, <strong>{{ request.user|title }}</strong></p>
+    </div>
+
+    <a href="{% url 'criar' %}" class="btn-add">+ Nova Tarefa</a>
+
+    <div class="lista-wrapper">
+        <ul>
+            {% for tarefa in tarefas %}
+                <li class="tarefa-card">
+                    <div class="tarefa-info">
+                        <span class="tarefa-titulo">{{ tarefa.titulo }}</span>
+                        <span class="tarefa-status">
+                            {% if tarefa.concluida %} Concluída {% else %} Pendente {% endif %}
+                        </span>
+                    </div>
+                    <div class="acoes">
+                        <a href="{% url 'editar' tarefa.id %}" class="btn-edit">Editar</a>
+                        <a href="{% url 'deletar' tarefa.id %}" class="btn-delete">Excluir</a>
+                    </div>
+                </li>
+            {% empty %}
+                <p style="text-align: center; color: #636e72;">Nenhuma tarefa </p>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="footer">
+        <hr style="border: 0; border-top: 1px solid #ddd; margin-bottom: 20px;">
+        <a href="{% url 'logout' %}" class="btn-logout">Sair da conta</a>
+    </div>
+</div>
+
+</body>
+</html>
