@@ -20,9 +20,11 @@ operações completas de CRUD. Cada usuário acessa apenas suas próprias tarefa
 
 ## Screenshots
 
-![Login](screenshots/login.png)
-![Lista de tarefas](screenshots/lista.png)
-![Excluir tarefa](screenshots/deletar.png)
+![Login](screenshots/login_todo.png)
+![Lista de tarefas](screenshots/lista_todo.png)
+![Adicionar tarefas] (screenshots/nova_tarefa.png)
+![Excluir tarefa](screenshots/excluir_todo.png)
+
 
 ## Como rodar localmente
 ```bash
