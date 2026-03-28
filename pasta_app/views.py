@@ -19,6 +19,7 @@ class CriarTarefa(LoginRequiredMixin, CreateView):
     model = Tarefa 
     fields = ['titulo', 'descricao', 'concluida'] 
     success_url = reverse_lazy('tarefas') 
+    template_name = 'pasta_app/tarefa_form.html'
 
     def form_valid(self, form): 
         form.instance.usuario = self.request.user 

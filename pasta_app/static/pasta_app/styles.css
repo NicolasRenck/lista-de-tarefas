@@ -1,247 +1,604 @@
+/* =========================================
+   LISTA DE TAREFAS — CSS
+   Tema claro · Minimalismo refinado
+   Accent: azul-ardósia + verde menta
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap');
+
+/* ── Variáveis ─────────────────────────── */
 :root {
-    --bg-body: #e0e4e8; 
-    --bg-card: #ffffff;
-    --primary: #4a90e2;
-    --text-main: #2d3436;
-    --shadow-soft: 0 20px 40px rgba(0,0,0,0.08); 
-    --border-light: rgba(255, 255, 255, 0.5); 
+  --bg:         #f5f4f0;
+  --surface:    #ffffff;
+  --surface2:   #f0efe9;
+  --border:     #e4e2da;
+  --border2:    #d0cec4;
+  --accent:     #3d6b8e;
+  --accent-lt:  #eef4f9;
+  --green:      #2e7d5e;
+  --green-lt:   #edf7f3;
+  --red:        #c0392b;
+  --red-lt:     #fdf0ee;
+  --text:       #1a1a18;
+  --muted:      #888680;
+  --radius:     12px;
+  --shadow:     0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-md:  0 2px 8px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);
+  --transition: 0.2s ease;
 }
+
+/* ── Reset ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
 
 body {
-    background-color: var(--bg-body);
-    background: radial-gradient(circle, #e4e4e4 0%, #dcdde1 100%);
-    font-family: 'Inter', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+  font-family: 'Geist', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1.25rem 4rem;
+  line-height: 1.6;
 }
 
+/* ── Container principal ───────────────── */
 .container {
-    width: 100%;
-    max-width: 450px;
-    background-color: var(--bg-card);
-    padding: 40px;
-    
-    
-    border-radius: 24px; 
-    border: 1px solid rgba(0, 0, 0, 0.05); 
-    box-shadow: var(--shadow-soft);
-    position: relative;
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeUp 0.5s ease both;
 }
 
+/* ── Header ────────────────────────────── */
 .header {
-    margin-bottom: 30px;
-    text-align: left;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
 }
 
 .header h1 {
-    font-size: 1.8rem;
-    margin: 0;
-    font-weight: 700;
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
 }
 
 .header p {
-    color: var(--text-light);
-    margin: 5px 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+  font-weight: 400;
 }
 
+.header p strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Botão nova tarefa ─────────────────── */
 .btn-add {
-    display: block;
-    background-color: var(--primary);
-    color: white;
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: transform 0.2s, background 0.2s;
-    margin-bottom: 25px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius);
+  transition: background var(--transition), transform 0.12s, box-shadow var(--transition);
+  align-self: flex-start;
+  letter-spacing: 0.01em;
 }
 
 .btn-add:hover {
-    background-color: #357abd;
-    transform: translateY(-2px);
+  background: #2d5572;
+  box-shadow: 0 4px 16px rgba(61,107,142,0.25);
+  transform: translateY(-1px);
 }
 
-ul {
-    padding: 0;
-    margin: 0;
+.btn-add:active { transform: translateY(0); }
+
+/* ── Lista wrapper ─────────────────────── */
+.lista-wrapper ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
+/* ── Card de tarefa ────────────────────── */
 .tarefa-card {
-    background: var(--bg-card);
-    padding: 16px;
-    margin-bottom: 12px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0,0,0,0.02);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+  animation: fadeUp 0.4s ease both;
 }
 
 .tarefa-card:hover {
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border2);
+  transform: translateY(-1px);
 }
 
+/* Stagger animation nos cards */
+.tarefa-card:nth-child(1) { animation-delay: 0.05s; }
+.tarefa-card:nth-child(2) { animation-delay: 0.1s; }
+.tarefa-card:nth-child(3) { animation-delay: 0.15s; }
+.tarefa-card:nth-child(4) { animation-delay: 0.2s; }
+.tarefa-card:nth-child(5) { animation-delay: 0.25s; }
+
 .tarefa-info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
 }
 
 .tarefa-titulo {
-    font-weight: 600;
-    font-size: 1.05rem;
-    margin-bottom: 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* ── Badge status ──────────────────────── */
 .tarefa-status {
-    font-size: 0.85rem;
-    color: var(--text-light);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.acoes a {
-    text-decoration: none;
-    font-size: 0.9rem;
-    padding: 6px 10px;
-    border-radius: 6px;
-    margin-left: 5px;
-    transition: background 0.2s;
+.tarefa-status:has(+ *),
+.tarefa-card .tarefa-status {
+  background: var(--green-lt);
+  color: var(--green);
+  border: 1px solid #c3e8d8;
+}
+
+/* Pendente */
+.tarefa-card:has(.tarefa-status) .tarefa-status {
+  background: var(--green-lt);
+  color: var(--green);
+  border: 1px solid #c3e8d8;
+}
+
+/* Override via Django template — vamos usar classes diretas */
+.status-pendente {
+  background: #fff8ec;
+  color: #b07d2a;
+  border: 1px solid #f0dda8;
+}
+
+.status-concluida {
+  background: var(--green-lt);
+  color: var(--green);
+  border: 1px solid #c3e8d8;
+}
+
+/* ── Ações ─────────────────────────────── */
+.acoes {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.btn-edit,
+.btn-delete {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
 }
 
 .btn-edit {
-    color: var(--primary);
-    background: #eef5ff;
+  background: var(--accent-lt);
+  color: var(--accent);
 }
 
-.btn-edit:hover { background: #d0e3ff; }
+.btn-edit:hover {
+  background: var(--accent);
+  color: #fff;
+}
 
 .btn-delete {
-    color: var(--danger);
-    background: #fff0f0;
+  background: var(--red-lt);
+  color: var(--red);
 }
 
-.btn-delete:hover { background: #ffdada; }
+.btn-delete:hover {
+  background: var(--red);
+  color: #fff;
+}
 
+/* ── Empty state ───────────────────────── */
+.lista-wrapper p {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 3rem 0;
+  background: var(--surface);
+  border: 1px dashed var(--border2);
+  border-radius: var(--radius);
+}
+
+/* ── Footer / logout ───────────────────── */
 .footer {
-    margin-top: 30px;
-    text-align: center;
+  margin-top: 0.5rem;
 }
 
 .btn-logout {
-    color: var(--text-light);
-    font-size: 0.9rem;
-    text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.825rem;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.btn-logout:hover {
+  color: var(--red);
+  border-color: #f0c4c0;
+  background: var(--red-lt);
+}
+
+/* ── Formulário (tarefa_form.html) ─────── */
+form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 form p {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-input[type="text"], textarea, select {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-top: 5px;
-    font-family: inherit;
-    font-size: 1rem;
+form p label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
 }
 
-input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
+form p input[type="text"],
+form p input[type="email"],
+form p input[type="password"],
+form p textarea,
+form p select {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'Geist', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.7rem 0.9rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  width: 100%;
+}
+
+form p input:focus,
+form p textarea:focus,
+form p select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(61,107,142,0.1);
+  background: #fff;
+}
+
+/* Checkbox de concluída */
+form p input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--accent);
+  cursor: pointer;
 }
 
 .btn-save {
-    width: 100%;
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    font-size: 1rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: 'Geist', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  transition: background var(--transition), transform 0.12s, box-shadow var(--transition);
+  align-self: flex-start;
 }
 
 .btn-save:hover {
-    background-color: #357abd;
+  background: #2d5572;
+  box-shadow: 0 4px 16px rgba(61,107,142,0.25);
+  transform: translateY(-1px);
 }
 
 .btn-cancel {
-    display: block;
-    text-align: center;
-    margin-top: 15px;
-    color: var(--text-light);
-    text-decoration: none;
-    font-size: 0.9rem;
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color var(--transition);
 }
 
-.btn-danger {
-    background-color: #ff7675; 
-    color: white; 
-    border: none;
-    transition: background 0.2s ease;
+.btn-cancel:hover { color: var(--text); }
+
+/* ── Confirm delete ────────────────────── */
+.container[style*="text-align: center"] .header h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.8rem;
+  font-weight: 400;
 }
 
-.btn-danger:hover {
-    background-color: #e17055; 
+.container[style*="text-align: center"] h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--muted);
+  margin: 0.75rem 0 1.5rem;
 }
 
 .divisor-suave {
-    height: 1px;
-    background-color: #cac7c7;
-    margin: 25px auto; 
-    width: 80%;       
-    border: none;
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 1.25rem 0;
 }
 
 .btn-confirmar {
-    width: 100%;
-    background-color: #ff7675; 
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 12px;
-    font-family: inherit; 
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: block;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: 'Geist', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  transition: background var(--transition), transform 0.12s;
+  margin-bottom: 0.75rem;
 }
 
 .btn-confirmar:hover {
-    background-color: #d63031;
-    transform: translateY(-2px); 
-    box-shadow: 0 5px 15px rgba(214, 48, 49, 0.2);
+  background: #a93226;
+  transform: translateY(-1px);
 }
 
-
 .btn-voltar {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 12px;
-    margin-top: 15px;
-    color: #636e72;
-    text-decoration: none;
-    font-family: inherit; 
-    font-weight: 500;
-    font-size: 0.95rem;
-    border-radius: 12px;
-    transition: all 0.3s ease;
+  display: inline-block;
+  font-size: 0.875rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: background var(--transition), border-color var(--transition);
 }
 
 .btn-voltar:hover {
-    background-color: #f1f2f6; 
-    color: #2d3436;
+  background: var(--accent-lt);
+  border-color: var(--accent);
+}
+
+/* ── Login / Auth pages ────────────────── */
+.login-wrapper {
+  width: 100%;
+  max-width: 400px;
+  animation: fadeUp 0.5s ease both;
+}
+
+.login-wrapper .header h1 {
+  font-size: 2rem;
+}
+
+/* ── Animação ──────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsivo ────────────────────────── */
+@media (max-width: 520px) {
+  body { padding: 1.5rem 1rem 3rem; }
+
+  .header h1 { font-size: 2rem; }
+
+  .tarefa-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .acoes { width: 100%; justify-content: flex-end; }
+
+  .btn-save,
+  .btn-add { width: 100%; text-align: center; justify-content: center; }
+}
+
+
+/* estilos do login.html */
+
+body.login-page {
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1.5rem;
+  
+}
+ 
+.login-wrapper {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  animation: fadeUp 0.5s ease both;
+}
+ 
+/* ── Brand ─────────────────────────────── */
+.login-brand {
+  text-align: center;
+}
+ 
+.brand-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.4rem;
+  border-radius: 14px;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 4px 16px rgba(61,107,142,0.3);
+}
+ 
+.login-brand h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+ 
+.login-brand p {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+ 
+/* ── Card ──────────────────────────────── */
+.login-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+}
+ 
+.login-card h2 {
+  font-family: 'Geist', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0;
+}
+ 
+/* ── Form groups ───────────────────────── */
+.login-card form {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  gap: 1rem;
+}
+ 
+.login-card .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+ 
+.login-card label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+ 
+.login-card input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'Geist', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.7rem 0.9rem;
+  outline: none;
+  width: 100%;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+ 
+.login-card input::placeholder { color: var(--muted); }
+ 
+.login-card input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(61,107,142,0.1);
+  background: #fff;
+}
+ 
+/* ── Botão ─────────────────────────────── */
+.btn-login {
+  width: 100%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: 'Geist', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.8rem;
+  margin-top: 0.5rem;
+  transition: background var(--transition), transform 0.12s, box-shadow var(--transition);
+  letter-spacing: 0.01em;
+}
+ 
+.btn-login:hover {
+  background: #2d5572;
+  box-shadow: 0 4px 16px rgba(61,107,142,0.25);
+  transform: translateY(-1px);
+}
+ 
+.btn-login:active { transform: translateY(0); }
+ 
+/* ── Erro ──────────────────────────────── */
+.login-error {
+  background: var(--red-lt);
+  border: 1px solid #f0c4c0;
+  border-radius: 8px;
+  color: var(--red);
+  font-size: 0.85rem;
+  padding: 0.65rem 0.9rem;
+  margin-bottom: 1rem;
 }
