@@ -17,6 +17,7 @@ operações completas de CRUD. Cada usuário acessa apenas suas próprias tarefa
 - HTML5 + CSS3
 - SQLite
 - Django Contrib Auth
+- Containerização: Docker + Docker Compose para ambiente de desenvolvimento reproduzível.
 
 ## Screenshots
 
