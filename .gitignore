@@ -1,2 +1,7 @@
 venv/
 db.sqlite3
+.env
+env/
+Dockerfile
+.dockerignore
+*.sqlite3
